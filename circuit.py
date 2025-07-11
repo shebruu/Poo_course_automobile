@@ -1,25 +1,48 @@
+
 import random
 from voiture import Voiture
 # class Circuit(Voiture):
+def vitesse_rand(voiture):
+    """ Génere une vitesse aléatoire de voiture a partir de  sa vitesse minimal et maximal  """
+    return random.uniform(voiture.vitesse_min, voiture.vitesse_max)
+
+
 class Circuit:
 
 
-    def __init__(self,nb_tour, distance_tour_km):
+    def __init__(self,nb_tour, distance_tour=5):
         # super().__init__(marque,modele,nbtour=None,distance_tour_km=None,vitesse_min=None,vitesse_max=None)
-        self._nb_tour=nbtour
-        self._distance_tour_km=distance_tour_km
+        self._nb_tour=nb_tour
+        self._distance_tour =distance_tour
 
-    def trouver_distance(self, voiture)
-    temps_tour_circuit_h=_distance_tour_km/vitesse_voiture_tour
-    _somme_total_temps=(temps_tour_circuit_h*60)*_nb_tour
+    @property
+    def nb_tour(self):
+        return self._nb_tour
 
-    def trouver_vitesse_random(self,voiture):
-        return random.uniform(voiture._vitesse_min,voiture._vitesse_max)
+    @property
+    def distance_tour_km(self):
+         return self._distance_tour
 
-    def trouver_temps_tour_circuit_h(self,voiture):
-        return voiture._distance_tour_km/trouver_vitesse_random(voiture)
+    @property
+    def distance_tour(self):
+        return self._distance_tour
+    @distance_tour.setter
+    def distance_tour(self,value):
+         self._distance_tour=value
 
-    
+    def temps_parcours_circuit(self, voiture):
+
+        vitesse= vitesse_rand(voiture)
+        temps_heure=self.distance_tour/vitesse
+        return temps_heure * 60
+
+
+    def temps_total(self, voiture):
+
+        somme_temps_total= self.temps_parcours_circuit(voiture)
+        return somme_temps_total  * self.nb_tour
+
+
 v1=Voiture("Peugot","208",5,40,20,80)
 print(f"Marque : {v1.marque}")
 
@@ -27,10 +50,19 @@ v2= Voiture("renault","clio",5,50,20,80)
 
 
 
-c1v1=Circuit(5)
+c1v1=Circuit(5,140)
 
-vitesse_voiture_tour=trouver_vitesse_random(v1)
-print("vitesse voiture tour : ",vitesse_voiture_tour)
+vitesse_random=vitesse_rand(v1)
+print("vitesse voiture tour : ",vitesse_random)
 
-temps_tour_circuit_h=trouver_temps_tour_circuit_h(v1)
-print("temps  en heure pour un tour de circuit")
+
+
+#
+# temps_tour_circuit=temps_parcours_circuit(v1)
+# print("temps  en heure pour un tour de circuit",temps_tour_circuit)
+
+
+
+
+temps_total= temps_total(v1)
+print("Somme des Temps totaux des tours de cette voiture : ",temps_total)

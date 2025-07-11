@@ -1,11 +1,11 @@
 class Voiture:
-    def __init__(self,marque,modele):
+    def __init__(self,marque,modele,nbtour=None,distance_tour_km=None,vitesse_min=None,vitesse_max=None):
         self._marque=marque
         self._modele=modele
-        self._nbtour=0
-        self._distance_tour_km=0
-        self._vitesse_min=0
-        self._vitesse_max=0
+        self._nbtour=nbtour
+        self._distance_tour_km=distance_tour_km
+        self._vitesse_min=vitesse_min
+        self._vitesse_max=vitesse_max
 
     def __str__(self):
         return f"{self.__class__.__name__} : {self.marque}, {self.modele}  "
@@ -17,24 +17,29 @@ class Voiture:
     @property
     def modele(self):
         return self._modele
+    @property
+    def vitesse_min(self):
+        return self._vitesse_min
+
+    @property
+    def vitesse_max(self):
+        return self._vitesse_max
 
 
-v1=Voiture("Peugot",208)
-print(f"Marque : {v1.marque}")
+    @vitesse_max.setter
+    def vitesse_max(self,value):
+         self._vitesse_max=value
 
-bmax=v1._vitesse_max=50
-print(bmax)
+    @vitesse_min.setter
+    def vitesse_min(self, value):
+        self._vitesse_min = value
 
-# vm_v1=v1._vitesse_max=80
-# print(f"{vm_v1}")
 
-"""
-    def __init__(self,marque, marque,vitesse_minimal,vitesse_maximale):
-        self._marque=marque
-        self._modele=modele
-        self._vitesse_min=vitesse_min
-        self._vitesse_max=vitesse_maximale
-"""
+
+
+
+
+
 
 
 
