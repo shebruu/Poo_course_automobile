@@ -56,7 +56,7 @@ class Circuit:
         Returns:
             float: Temps mis pour parcourir un tour (en minutes) avec la vitesse aléatoire obtenue.
         """
-        vitesse= voiture.vitesse_rand
+        vitesse= voiture.vitesse_aleatoire()
         temps_heure=self.distance_tour/vitesse
         return temps_heure * 60
 
@@ -94,32 +94,3 @@ class Circuit:
         return temps_total_min
 
 
-v1=Voiture("Peugot","208",5,40,20,80)
-print(f"Voiture 1 :  : {v1.marque} {v1.modele} | Vitesse max :  {v1.vitesse_max} Vitesse min :{v1.vitesse_min}")
-
-v2= Voiture("renault","clio",5,50,20,80)
-print(f"Voiture 2 :  : {v2.marque} {v2.modele} | Vitesse max :  {v2.vitesse_max} Vitesse min :{v2.vitesse_min} ")
-
-
-c1v1=Circuit(5,140)
-print(f"Circuit de la voiture 1 :  {c1v1.nb_tour} ")
-
-# Exemple : vitesse aléatoire d’un tour
-vitesse_random=v1.vitesse_rand()
-print("vitesse voiture 1 pour un  tour : {:.2f} km/h".format(vitesse_random))
-
-
-
-# Temps pour un tour
-temps_tour_circuit = c1v1.temps_parcours_circuit(v1)
-print("Temps pour un tour de circuit : {:.2f} minutes ".format(temps_tour_circuit))
-
-
-# Temps total pour tous les tours (appel CORRECT de la méthode sur l’instance)
-temps_total_v1 = c1v1.temps_total(v1)
-print("Somme des temps totaux  des tours pour cette voiture : {:.2f} minutes".format(temps_total_v1))
-
-
-# Calcul du temps minimal possible pour v1 sur c1v1
-temps_min = c1v1.temps_total_plus_bas(v1)
-print("Temps total le plus bas  pour cette voiture : {:.2f} minutes".format(temps_min))

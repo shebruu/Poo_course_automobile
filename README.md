@@ -24,3 +24,6 @@ Chaque voiture a une vitesse minimale et maximale. À chaque tour, la vitesse de
    cd <nom_du_dossier>
 2. Lance le fichier principal pour découvrir :
    python main.py
+
+Structure : avec import absolu car pas de modle, main.py est ds le  meme dossier 
+from voiture import Voiture
