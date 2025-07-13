@@ -8,9 +8,12 @@ Projet pédagogique pour apprendre la programmation orientée objet avec creatio
 
 
 ## ✨ Fonctionnalités principales
-
-- Calcul du gagnant
-- Menus de tests et scénarios dans `main.py` ou `main_principale.py`
+Permet de simuler des courses automobiles sur un circuit.
+Chaque voiture a une vitesse minimale et maximale. À chaque tour, la vitesse de la voiture est tirée au hasard entre ses deux limites.
+- Le temps mis pour parcourir un tour.
+- Le temps total pour tous les tours.
+- Le meilleur temps total possible (si la voiture va toujours à sa vitesse maximale).
+- Menus de tests et scénarios dans `main.py`
 
 
 ## Démarrage
@@ -19,5 +22,5 @@ Projet pédagogique pour apprendre la programmation orientée objet avec creatio
    ```bash
    git clone <url_du_repo>
    cd <nom_du_dossier>
-2. Lance le fichier principal pour découvrir le zoo :
+2. Lance le fichier principal pour découvrir :
    python main.py

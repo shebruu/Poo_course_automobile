@@ -1,3 +1,4 @@
+import random
 class Voiture:
     def __init__(self,marque,modele,nbtour=None,distance_tour_km=None,vitesse_min=None,vitesse_max=None):
         self._marque=marque
@@ -34,12 +35,11 @@ class Voiture:
     def vitesse_min(self, value):
         self._vitesse_min = value
 
+    def vitesse_aleatoire(self):
+        """
+        Génère une vitesse aléatoire comprise entre la vitesse minimale et maximale de CETTE voiture.
 
-
-
-
-
-
-
-
-
+        Returns:
+            float: Vitesse aléatoire (en km/h) tirée entre la vitesse minimale et maximale de cette voiture.
+        """
+        return random.uniform(self.vitesse_min, self.vitesse_max)
