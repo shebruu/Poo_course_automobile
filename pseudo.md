@@ -66,18 +66,18 @@ temps_min_possible = ((distance_tour / vitesse_max) * 60) * nb_tour
 temps_max_possible = ((distance_tour / vitesse_min) * 60) * nb_tour
 
 
-| Cas                                      | Doit utiliser | Exemple d’appel                   |
-| ---------------------------------------- | :-----------: | :-------------------------------- |
-| **Méthode statique** (@staticmethod)     |   La Classe   | Circuit.vitesse\_rand(v1)         |
-| **Méthode d’instance** (self, sur objet) |    L’objet    | c1v1.temps\_parcours\_circuit(v1) |
-| **Méthode de Voiture** (self)            |    L’objet    | v1.vitesse\_aleatoire()           |
+| Cas                                      | Doit utiliser | Exemple d’appel                 |
+| ---------------------------------------- | :-----------: |:--------------------------------|
+| **Méthode statique** (@staticmethod)     |   La Classe   | Circuit.vitesse_rand(v1)        |
+| **Méthode d’instance** (self, sur objet) |    L’objet    | c1v1.temps_parcours_circuit(v1) |
+| **Méthode de Voiture** (self)            |    L’objet    | v1.vitesse_aleatoire()          |
 
 
-| Type de méthode        | Mot-clé/décorateur | 1er paramètre | Comment on l’appelle                                                    | Rôle / Quand l’utiliser ?                                                                                | Accès aux données ?                |
-| ---------------------- | ------------------ | :-----------: | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| **Méthode d’instance** | *(aucun)*          |     `self`    | Sur un **objet** (`objet.methode()`)                                    | Pour travailler ou modifier **les attributs propres à chaque objet** (ex : position d’une voiture)       | Attributs et méthodes de l’objet   |
-| **Méthode de classe**  | `@classmethod`     |     `cls`     | Sur la **classe** (`Classe.methode()`)                                  | Pour travailler sur **la classe dans son ensemble** (ex : créer des objets d’une manière spéciale)       | Attributs et méthodes de la classe |
-| **Méthode statique**   | `@staticmethod`    |   *(aucun)*   | Sur la **classe ou un objet** (`Classe.methode()` ou `objet.methode()`) | Pour des **fonctions utilitaires** : liées logiquement à la classe, mais qui n’utilisent pas ses données | Rien : n’accède ni à self ni à cls |
+| Type de méthode        | Mot-clé/décorateur | 1er paramètre | Comment on l’appelle                                                    | Rôle / Quand l’utiliser?                                                                                 | Accès aux données ?              |
+| ---------------------- | ------------------ | :-----------: | ----------------------------------------------------------------------- |----------------------------------------------------------------------------------------------------------| -------------------------------- |
+| **Méthode d’instance** | *(aucun)*          |     `self`    | Sur un **objet** (`objet.methode()`)                                    | Pour travailler ou modifier **les attributs propres à chaque objet** (ex: position d’une voiture)       | Attributs et méthodes de l’objet |
+| **Méthode de classe**  | `@classmethod`     |     `cls`     | Sur la **classe** (`Classe.methode()`)                                  | Pour travailler sur **la classe dans son ensemble** (ex: créer des objets d’une manière spéciale)       | Attributs et méthodes de la classe |
+| **Méthode statique**   | `@staticmethod`    |   *(aucun)*   | Sur la **classe ou un objet** (`Classe.methode()` ou `objet.methode()`) | Pour des **fonctions utilitaires** : liées logiquement à la classe, mais qui n’utilisent pas ses données |  n’accède ni à self ni à cls |
 
 
 Méthode d’instance :
@@ -105,17 +105,14 @@ Convention de visibilité
 | ----------- | ------------ | ---------------------------------------------------------------- | -------------------------------------------------------------------- |
 | **Public**  | `variable`   | Partout (aucune restriction)                                     | Attribut accessible librement : usage normal                         |
 | **Protégé** | `_variable`  | Par convention : interne à la classe et ses sous-classes         | Indique qu’on ne doit pas y accéder “directement” depuis l’extérieur |
-| **Privé**   | `__variable` | Name mangling : accessible uniquement à l’intérieur de la classe | Pour cacher l’attribut, éviter les conflits avec les sous-classes    |
+| **Privé**   | `__variable` | Name mangling: accessible uniquement à l’intérieur de la classe | Pour cacher l’attribut, éviter les conflits avec les sous-classes    |
 
 
 Pourquoi définir les attributs dans le constructeur (__init__) ?
 tous les attributs qui définissent l’état de l’objet devraient être initialisés dans __init__
     Assure l’initialisation des données propres à chaque objet dès sa création.
-
     Permet d’appliquer la protection (public/protégé/privé) directement à l’attribut.
-
     Organise le code et rend les objets “prêts à l’emploi” avec leurs valeurs par défaut ou reçues en paramètre.
-
     Garantit la cohérence : chaque objet a bien ses attributs définis, ce qui réduit le risque de bug lors de l’utilisation.
 
 
@@ -139,11 +136,8 @@ class Voiture:
 
 (@property) implémentable pour tous les attributs initialisés dans le constructeur, qu’ils soient publics, protégés (_attribut), ou privés (__attribut).
 permet de : contrôler/modifier l’accès à un attribut,
-
 ajouter de la validation,
-
 rendre certains attributs “lecture seule”,
-
 ou garder la possibilité de changer l’implémentation interne plus tard.
 
 
@@ -154,3 +148,30 @@ acces
 | **Protégé (\_)** | `self._attribut`       |    Oui (mais à éviter, sauf héritage)   | `objet._attribut`            | Accès direct déconseillé : préférer propriété |
 | **Privé (\_\_)** | `self.__attribut`      |           Non (name mangling)           | `objet._NomClasse__attribut` | À éviter : exposer par propriété              |
 | **Propriété**    | via `@property`        |                   Oui                   | `objet.nom_propriété`        | Recommandé pour lecture/écriture contrôlée    |
+
+
+Console de jeu :
+
+DÉBUT PROGRAMME
+│
+├── Créer une voiture v1 (Peugeot 208)
+├── Créer une voiture v2 (Renault Clio)
+├── Créer un circuit c1 avec 5 tours de 140 km
+│
+├── Afficher infos course
+│
+├── Tant que l'utilisateur ne tape pas 'q' :
+│   ├── Afficher "NOUVELLE COURSE"
+│   ├── Pour chaque tour (1 à 5) :
+│   │   ├── Générer une vitesse aléatoire pour v1
+│   │   ├── Générer une vitesse aléatoire pour v2
+│   │   ├── Calculer position sur la piste (normalisation)
+│   │   ├── Afficher la piste pour chaque voiture
+│   │   └── Pause 1 seconde
+│   ├── Calculer le temps total (vitesse aléatoire)
+│   ├── Calculer le temps minimal (vitesse max)
+│   ├── Afficher les résultats
+│   ├── Demander si on recommence ou quitte
+│   └── Si 'q', sortir de la boucle
+│
+└── FIN
