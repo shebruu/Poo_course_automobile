@@ -2,12 +2,11 @@
 
 Bienvenue  !  
 
-Projet pédagogique pour apprendre la programmation orientée objet avec creation de classes simple et  calculs de temps de vitesse des tours
+Projet pédagogique pour apprendre la programmation orientée objet avec creation de classes et calculs de temps de vitesse des tours
 
 
 
-
-## ✨ Fonctionnalités principales
+##Fonctionnalités principales
 Permet de simuler des courses automobiles sur un circuit.
 Chaque voiture a une vitesse minimale et maximale. À chaque tour, la vitesse de la voiture est tirée au hasard entre ses deux limites.
 - Le temps mis pour parcourir un tour.
@@ -18,12 +17,10 @@ Chaque voiture a une vitesse minimale et maximale. À chaque tour, la vitesse de
 
 ## Démarrage
 
-1. Clone le projet :
+1. Clone le projet:
    ```bash
    git clone <url_du_repo>
    cd <nom_du_dossier>
-2. Lance le fichier principal pour découvrir :
+2. Lancer:
    python main.py
 
-Structure : avec import absolu car pas de modle, main.py est ds le  meme dossier 
-from voiture import Voiture
