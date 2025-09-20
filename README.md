@@ -1,20 +1,15 @@
-# Course automobile  en Python
+# Course automobile en Python
 
 Bienvenue  !  
 
 Projet pédagogique pour apprendre la programmation orientée objet avec creation de classes et calculs de temps de vitesse des tours
 
 
-
-##Fonctionnalités principales
-Permet de simuler des courses automobiles sur un circuit.
-Chaque voiture a une vitesse minimale et maximale. À chaque tour, la vitesse de la voiture est tirée au hasard entre ses deux limites.
-- Le temps mis pour parcourir un tour.
-- Le temps total pour tous les tours.
-- Le meilleur temps total possible (si la voiture va toujours à sa vitesse maximale).
-- Menus de tests et scénarios dans `main.py`
-
-
+## Fonctionnalités
+- Simulation de courses sur plusieurs tours.  
+- Calcul automatique du temps par tour et du temps total.  
+- Comparaison avec le meilleur temps théorique possible.  
+- Gestion de plusieurs voitures avec des caractéristiques différentes.  
 ## Démarrage
 
 1. Clone le projet:
